@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">GoCheeta Admin</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/adminDriver">Add Driver</a>
+          <a class="dropdown-item" href="/adminAddVehicles">Add Vehicles</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Manage
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/adminManageCustomer">Manage Customer</a>
+          <a class="dropdown-item" href="/users">Manage Driver</a>
+          <a class="dropdown-item" href="/adminManageVehicle">Manage Vehicles</a>
+          <a class="dropdown-item" href="/adminManageBooking">Manage Bookings</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Log Out</a>
+      </li>
+      </form>
+    </ul>
+
+  </div>
+</nav>
+<div class="container-fluid text-center">
+  <h1>Add Vehicles</h1>
+</div>
+<div th:if="${message}" class="alert alert-success text-center">
+  [[${message}]]
+</div>
+<form th:action="@{/vehicle/add}" method="post" th:object="${vehicle}" style="max-width: 500px; margin: 0 auto;">
+  <input type="hidden" th:field="*{id}">
+  <div class="border border-secondary rounded p-3">
+    <div class="from-group row">
+      <label class="cal-sm-4 col-form-label">Vehicle Name :</label>
+      <div class="col-sm-8">
+        <input type="text"  class="form-control" th:field="*{vehicleName}"/>
+      </div>
+    </div>
+
+    <div class="from-group row">
+      <label class="cal-sm-4 col-form-label">Vehicle Model :</label>
+      <div class="col-sm-8">
+        <input type="text"  class="form-control" th:field="*{vehicleModel}"/>
+      </div>
+    </div>
+    <div class="from-group row">
+      <label class="cal-sm-4 col-form-label">Number Plate :</label>
+      <div class="col-sm-8">
+        <input type="text"  class="form-control" th:field="*{numberPlate}"/>
+      </div>
+    </div>
+
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary m-2">Save</button>
+      <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>
